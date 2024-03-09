@@ -2,6 +2,8 @@
 import Title from '../atoms/Title.vue';
 import Typography from '../atoms/Typography.vue';
 import Link from '../atoms/Link.vue';
+import Input from '../atoms/Input.vue';
+
 </script>
 
 <template>
@@ -18,15 +20,15 @@ import Link from '../atoms/Link.vue';
       <div class="form-fields">
         <div class="input">
           <label for="email">Email</label>
-          <input id="email" placeholder="email@example.com" />
+          <Input id="email" placeholder="email@example.com" />
         </div>
         <div class="input">
           <label for="password">Password</label>
-          <input id="password" placeholder="Enter at least 8 characters" />
+          <Input id="password" type="password" placeholder="Enter at least 8 characters" />
         </div>
         <div class="input">
           <label for="confirmPassword">Confirm password</label>
-          <input id="confirmPassword" placeholder="Enter at least 8 characters" />
+          <Input id="confirmPassword" type="password" placeholder="Enter at least 8 characters" />
         </div>
       </div>
       <button>Sign up</button>
@@ -96,20 +98,6 @@ section {
     font-weight: 700;
     line-height: 20px;
     color: #323743
-  }
-
-  input {
-    background-color: inherit;
-    border: none;
-    color: #323743
-  }
-
-  input:focus {
-    outline: none;
-  }
-
-  input::placeholder {
-    color: #8F9197
   }
 }
 
