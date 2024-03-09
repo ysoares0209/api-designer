@@ -13,19 +13,21 @@ import Link from '../atoms/Link.vue';
         <router-link class="link" to="/">Sign In</router-link>
       </div>
     </header>
-    <section>
+    <section class="sign-up-form">
       <h1>Sign Up</h1>
-      <div class="input">
-        <label for="email">Email</label>
-        <input id="email" />
-      </div>
-      <div class="input">
-        <label for="password">Password</label>
-        <input id="password" />
-      </div>
-      <div class="input">
-        <label for="confirmPassword">Confirm password</label>
-        <input id="confirmPassword" />
+      <div class="form-fields">
+        <div class="input">
+          <label for="email">Email</label>
+          <input id="email" placeholder="email@example.com" />
+        </div>
+        <div class="input">
+          <label for="password">Password</label>
+          <input id="password" placeholder="Enter at least 8 characters" />
+        </div>
+        <div class="input">
+          <label for="confirmPassword">Confirm password</label>
+          <input id="confirmPassword" placeholder="Enter at least 8 characters" />
+        </div>
       </div>
       <button>Sign up</button>
     </section>
@@ -73,8 +75,67 @@ section {
   line-height: 22px;
 }
 
+.sign-up-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #171A1FFF
+  }
+}
+
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 .input {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  background-color: #F3F4F6;
+  width: 22.5rem;
+  height: 3.625rem;
+  font-size: 0.875rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+
+  label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 20px;
+    color: #323743
+  }
+
+  input {
+    background-color: inherit;
+    border: none;
+    color: #323743
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  input::placeholder {
+    color: #8F9197
+  }
+}
+
+button {
+  background-color: #181626;
+  color: #FFFF;
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: 22.5rem;
+  height: 2.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
 }
 </style>
