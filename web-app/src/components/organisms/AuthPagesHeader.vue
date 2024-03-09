@@ -4,14 +4,14 @@
 </script>
 
 <template>
-  <header>
+  <header class="AuthPagesHeader-wrapper">
     <span>Logo placeholder</span>
     <TextWithLink :text="text" :linkText="linkText" :linkUrl="linkUrl" />
   </header>
 </template>
 
 <style scoped>
-  header {
+  .AuthPagesHeader-wrapper {
     display: flex;
     justify-content: space-between;
   }

@@ -6,14 +6,14 @@
 </script>
 
 <template>
-  <div class="wrapper">
+  <div class="InputWithLabel-wrapper">
     <InputLabel :inputId="id" :text="label" />
     <Input :id="id" :type="type" :placeholder="placeholder" />
   </div>
 </template>
 
 <style scoped>
-  .wrapper {
+  .InputWithLabel-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;

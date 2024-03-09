@@ -6,14 +6,14 @@ defineProps(['text', 'linkText', 'linkUrl'])
 </script>
 
 <template>
-  <div class="wrapper">
+  <div class="TextWithLinkWrapper">
     <Typography :text="text" />
     <Link :link="linkUrl" :text="linkText" />
   </div>
 </template>
 
 <style scoped>
-  .wrapper {
+  .TextWithLinkWrapper {
     display: flex;
     width: 14em;
     justify-content: space-around;

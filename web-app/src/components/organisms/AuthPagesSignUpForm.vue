@@ -10,7 +10,7 @@ function onSubmit() {
 </script>
 
 <template>
-  <section class="container">
+  <section class="AuthPagesSignUpForm-wrapper">
       <Title text="Sign up" />
       <div class="form-fields">
         <InputWithLabel id="email" type="email" label="Email" placeholder="email@example.com" />
@@ -22,7 +22,7 @@ function onSubmit() {
 </template>
 
 <style scoped>
-.container {
+.AuthPagesSignUpForm-wrapper {
   height: 100%;
   display: flex;
   flex-direction: column;
