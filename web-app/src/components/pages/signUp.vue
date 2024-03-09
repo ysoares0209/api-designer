@@ -3,6 +3,7 @@ import Title from '../atoms/Title.vue';
 import Button from '../atoms/Button.vue';
 import InputWithLabel from '../molecules/InputWithLabel.vue';
 import TextWithLink from '../molecules/TextWithLink.vue';
+import AuthPagesHeader from '../organisms/AuthPagesHeader.vue';
 
 function onSubmit() {
   console.log('123')
@@ -12,10 +13,7 @@ function onSubmit() {
 
 <template>
   <main class="page-container">
-    <header>
-      <span>Logo placeholder</span>
-      <TextWithLink text="Already have an account?" linkText="Sign In" linkUrl="/" />
-    </header>
+    <AuthPagesHeader text="Already have an account?" linkText="Sign In" linkUrl="/" />
     <section class="sign-up-form">
       <Title text="Sign up" />
       <div class="form-fields">
