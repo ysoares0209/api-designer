@@ -8,7 +8,7 @@
 
 <style scoped>
   p {
-    font-size: 0.875rem;
+    font-size: 1rem;
     color: #323743ff;
   }
 </style>

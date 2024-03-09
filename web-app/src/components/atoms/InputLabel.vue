@@ -8,7 +8,7 @@
 
 <style scoped>
   label {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     font-weight: 700;
     line-height: 20px;
     color: #323743;

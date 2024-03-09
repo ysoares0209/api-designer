@@ -9,7 +9,7 @@
 <style scoped>
   .link {
     color: #181626ff;
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 500;
     text-decoration: underline;
     line-height: 22px;

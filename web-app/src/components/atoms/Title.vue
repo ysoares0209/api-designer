@@ -8,7 +8,7 @@
 
 <style scoped>
   h1 {
-    font-size: 2rem;
+    font-size: 2.3rem;
     font-weight: 700;
     color: #171a1fff;
   }

@@ -37,12 +37,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: 2.3rem;
 
     .form-fields {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1.7rem;
     }
   }
 </style>

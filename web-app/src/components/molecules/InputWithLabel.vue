@@ -18,9 +18,9 @@
     flex-direction: column;
     justify-content: space-between;
     background-color: #f3f4f6;
-    width: 22.5rem;
-    height: 3.625rem;
-    font-size: 0.875rem;
+    width: 25.7rem;
+    height: 3.75rem;
+    font-size: 1rem;
     padding: 0.5rem 0.75rem;
     border-radius: 6px;
   }

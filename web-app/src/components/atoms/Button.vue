@@ -13,8 +13,8 @@
     border: none;
     padding: 0;
     margin: 0;
-    width: 22.5rem;
-    height: 2.5rem;
+    width: 25.7rem;
+    height: 2.85rem;
     border-radius: 6px;
     cursor: pointer;
     font-size: 1rem;

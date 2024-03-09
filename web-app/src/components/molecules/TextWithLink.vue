@@ -15,7 +15,7 @@
 <style scoped>
   .TextWithLinkWrapper {
     display: flex;
-    width: 14em;
+    width: 16rem;
     justify-content: space-around;
   }
 </style>
