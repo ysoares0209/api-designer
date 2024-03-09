@@ -7,7 +7,7 @@
   <input :id="id" :type="computedType" :placeholder="placeholder" />
 </template>
 
-<style>
+<style scoped>
   input {
     background-color: inherit;
     border: none;

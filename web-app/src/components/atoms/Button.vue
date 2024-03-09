@@ -6,7 +6,7 @@
   <button @click="onClick">{{ text }}</button>
 </template>
 
-<style>
+<style scoped>
   button {
     background-color: #181626;
     color: #FFFF;

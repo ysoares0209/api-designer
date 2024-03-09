@@ -6,7 +6,7 @@ defineProps(['text'])
   <p>{{ text }}</p>
 </template>
 
-<style>
+<style scoped>
 p {
   font-size: 0.875rem;
   color: #323743FF;

@@ -6,7 +6,7 @@
   <label :for="inputId">{{ text }}</label>
 </template>
 
-<style>
+<style scoped>
   label {
     font-size: 0.75rem;
     font-weight: 700;

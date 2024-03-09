@@ -6,7 +6,7 @@ defineProps(['text', 'link'])
   <router-link class="link" :to="link">{{ text }}</router-link>
 </template>
 
-<style>
+<style scoped>
 .link {
   color: #181626FF;
   font-size: 0.875rem;
