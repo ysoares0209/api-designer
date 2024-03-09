@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import xIcon from '../../assets/Icons/XIcon.vue';
+  import XIcon from '../../assets/Icons/XIcon.vue';
   import Title from '../atoms/Title.vue';
   import Typography from '../atoms/Typography.vue';
   import CodeInput from '../atoms/CodeInput.vue';
@@ -13,7 +13,7 @@
   <Modal v-if="true">
     <div class="ConfirmEmailModal">
       <ClickableIcon class="CloseIcon">
-        <xIcon />
+        <XIcon />
       </ClickableIcon>
       <div class="TitleWrapper">
         <Title text="Almost done" />
