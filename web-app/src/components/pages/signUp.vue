@@ -14,7 +14,7 @@ import Link from '../atoms/Link.vue';
       </div>
     </header>
     <section class="sign-up-form">
-      <h1>Sign Up</h1>
+      <Title text="Sign up" />
       <div class="form-fields">
         <div class="input">
           <label for="email">Email</label>
