@@ -5,13 +5,11 @@
 <script setup lang="ts">
   import Input from '../atoms/Input.vue';
 
-  defineProps(['onInputChange']);
   const inputModel = defineModel('inputModel');
 </script>
 <template>
   <Input
     v-model:inputModel="inputModel"
-    @update:model="onInputChange"
     id="InputConfirmationCode"
     type="number"
     placeholder="Type in your code"
