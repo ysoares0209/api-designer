@@ -10,7 +10,7 @@ import Link from '../atoms/Link.vue';
       <span>Logo placeholder</span>
       <div class="link-container">
         <p class="typography">Already have an account?</p>
-        <router-link class="link" to="/">Sign In</router-link>
+        <Link :link="'/'" :text="'Sign in'" />
       </div>
     </header>
     <section class="sign-up-form">
@@ -65,14 +65,6 @@ section {
 .typography {
   font-size: 0.875rem;
   color: #323743FF;
-}
-
-.link {
-  color: #181626FF;
-  font-size: 0.875rem;
-  font-weight: 500;
-  text-decoration: underline;
-  line-height: 22px;
 }
 
 .sign-up-form {

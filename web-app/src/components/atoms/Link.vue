@@ -3,14 +3,16 @@ defineProps(['text', 'link'])
 </script>
 
 <template>
-  <a :href="link">{{ text }}</a>
+  <router-link class="link" :to="link">{{ text }}</router-link>
 </template>
 
 <style>
-a {
-  font-size: 1rem;
+.link {
+  color: #181626FF;
+  font-size: 0.875rem;
+  font-weight: 500;
   text-decoration: underline;
-  color: #181626;
+  line-height: 22px;
 }
 
 </style>
