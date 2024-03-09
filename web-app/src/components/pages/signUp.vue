@@ -8,7 +8,10 @@ import Link from '../atoms/Link.vue';
   <main class="page-container">
     <header>
       <span>Logo placeholder</span>
-      <p>Already have an account? <a>Sign In</a></p>
+      <div class="link-container">
+        <p class="typography">Already have an account?</p>
+        <router-link class="link" to="/">Sign In</router-link>
+      </div>
     </header>
     <section>
       <h1>Sign Up</h1>
@@ -49,6 +52,25 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.link-container {
+  display: flex;
+  width: 14em;
+  justify-content: space-around;
+}
+
+.typography {
+  font-size: 0.875rem;
+  color: #323743FF;
+}
+
+.link {
+  color: #181626FF;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: underline;
+  line-height: 22px;
 }
 
 .input {
