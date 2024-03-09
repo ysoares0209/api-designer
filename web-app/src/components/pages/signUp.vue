@@ -1,28 +1,12 @@
 <script setup lang="ts">
-import Title from '../atoms/Title.vue';
-import Button from '../atoms/Button.vue';
-import InputWithLabel from '../molecules/InputWithLabel.vue';
-import TextWithLink from '../molecules/TextWithLink.vue';
 import AuthPagesHeader from '../organisms/AuthPagesHeader.vue';
-
-function onSubmit() {
-  console.log('123')
-}
-
+import AuthPagesSignUpForm from '../organisms/AuthPagesSignUpForm.vue';
 </script>
 
 <template>
   <main class="page-container">
     <AuthPagesHeader text="Already have an account?" linkText="Sign In" linkUrl="/" />
-    <section class="sign-up-form">
-      <Title text="Sign up" />
-      <div class="form-fields">
-        <InputWithLabel id="email" type="email" label="Email" placeholder="email@example.com" />
-        <InputWithLabel id="password" type="password" label="Password" placeholder="Enter at least 8 characters" />
-        <InputWithLabel id="confirmPassword" type="password" label="Confirm password" placeholder="Enter at least 8 characters" />
-      </div>
-      <Button text="Sign Up" :onClick="onSubmit" />
-    </section>
+    <AuthPagesSignUpForm />
   </main>
 </template>
 
@@ -33,31 +17,6 @@ function onSubmit() {
   margin: 0 auto;
   padding: 4rem 2rem;
   font-weight: normal;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-}
-
-section {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.sign-up-form {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.form-fields {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
 }
 
 </style>
