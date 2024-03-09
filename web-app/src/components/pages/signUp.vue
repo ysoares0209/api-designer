@@ -9,8 +9,8 @@ import Link from '../atoms/Link.vue';
     <header>
       <span>Logo placeholder</span>
       <div class="link-container">
-        <p class="typography">Already have an account?</p>
-        <Link :link="'/'" :text="'Sign in'" />
+        <Typography text="Already have an account?" />
+        <Link :link="'/'" text="Sign in" />
       </div>
     </header>
     <section class="sign-up-form">
@@ -60,11 +60,6 @@ section {
   display: flex;
   width: 14em;
   justify-content: space-around;
-}
-
-.typography {
-  font-size: 0.875rem;
-  color: #323743FF;
 }
 
 .sign-up-form {

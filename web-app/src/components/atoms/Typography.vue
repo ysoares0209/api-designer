@@ -8,7 +8,7 @@ defineProps(['text'])
 
 <style>
 p {
-  margin: 0;
-  font-size: 1rem;
+  font-size: 0.875rem;
+  color: #323743FF;
 }
 </style>
