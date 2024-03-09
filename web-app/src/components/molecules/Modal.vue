@@ -1,9 +1,15 @@
 <script setup lang="ts">
   import Overlay from '../atoms/Overlay.vue';
+
+  const emit = defineEmits(['onOverlayClick']);
+
+  function onOverlayClick() {
+    emit('onOverlayClick');
+  }
 </script>
 
 <template>
-  <Overlay />
+  <Overlay :onClick="onOverlayClick" />
   <div class="ModalWrapper">
     <slot></slot>
   </div>

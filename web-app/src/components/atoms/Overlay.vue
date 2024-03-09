@@ -1,5 +1,9 @@
+<script setup lang="ts">
+  defineProps(['onClick']);
+</script>
+
 <template>
-  <div class="overlay"></div>
+  <div @click="onClick" class="overlay"></div>
 </template>
 
 <style scoped>

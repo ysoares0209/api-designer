@@ -12,7 +12,7 @@
 </script>
 
 <template>
-  <Modal v-if="isModalOpen">
+  <Modal v-if="isModalOpen" @onOverlayClick="closeModal">
     <div class="ConfirmEmailModal">
       <ClickableIcon class="CloseIcon" :onClick="closeModal">
         <XIcon />
