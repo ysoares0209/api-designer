@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import AuthPagesTemplate from '../Templates/AuthPages.vue';
-import AuthPagesSignUpForm from '../organisms/AuthPagesSignUpForm.vue';
+  import AuthPagesTemplate from '../Templates/AuthPages.vue';
+  import AuthPagesSignUpForm from '../organisms/AuthPagesSignUpForm.vue';
 </script>
 
 <template>
@@ -9,5 +9,4 @@ import AuthPagesSignUpForm from '../organisms/AuthPagesSignUpForm.vue';
   </AuthPagesTemplate>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

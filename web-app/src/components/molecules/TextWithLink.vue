@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import Typography from '../atoms/Typography.vue';
-import Link from '../atoms/Link.vue';
+  import Typography from '../atoms/Typography.vue';
+  import Link from '../atoms/Link.vue';
 
-defineProps(['text', 'linkText', 'linkUrl'])
+  defineProps(['text', 'linkText', 'linkUrl']);
 </script>
 
 <template>

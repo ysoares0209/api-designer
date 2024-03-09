@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  defineProps(['text', 'onClick'])
+  defineProps(['text', 'onClick']);
 </script>
 
 <template>
@@ -9,7 +9,7 @@
 <style scoped>
   button {
     background-color: #181626;
-    color: #FFFF;
+    color: #ffff;
     border: none;
     padding: 0;
     margin: 0;

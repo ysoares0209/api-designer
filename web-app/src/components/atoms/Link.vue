@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps(['text', 'link'])
+  defineProps(['text', 'link']);
 </script>
 
 <template>
@@ -7,12 +7,11 @@ defineProps(['text', 'link'])
 </template>
 
 <style scoped>
-.link {
-  color: #181626FF;
-  font-size: 0.875rem;
-  font-weight: 500;
-  text-decoration: underline;
-  line-height: 22px;
-}
-
+  .link {
+    color: #181626ff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: underline;
+    line-height: 22px;
+  }
 </style>

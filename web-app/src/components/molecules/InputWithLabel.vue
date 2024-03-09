@@ -2,7 +2,7 @@
   import Input from '../atoms/Input.vue';
   import InputLabel from '../atoms/InputLabel.vue';
 
-  defineProps(['id', 'type', 'label', 'placeholder'])
+  defineProps(['id', 'type', 'label', 'placeholder']);
 </script>
 
 <template>
@@ -17,7 +17,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #F3F4F6;
+    background-color: #f3f4f6;
     width: 22.5rem;
     height: 3.625rem;
     font-size: 0.875rem;

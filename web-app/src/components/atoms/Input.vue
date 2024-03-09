@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  const props = defineProps(['id', 'type', 'placeholder'])
-  const computedType = props.type || "text"  
+  const props = defineProps(['id', 'type', 'placeholder']);
+  const computedType = props.type || 'text';
 </script>
 
 <template>
@@ -11,7 +11,7 @@
   input {
     background-color: inherit;
     border: none;
-    color: #323743
+    color: #323743;
   }
 
   input:focus {
@@ -19,6 +19,6 @@
   }
 
   input::placeholder {
-    color: #8F9197
+    color: #8f9197;
   }
 </style>

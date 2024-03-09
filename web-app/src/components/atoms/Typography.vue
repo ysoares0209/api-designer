@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps(['text'])
+  defineProps(['text']);
 </script>
 
 <template>
@@ -7,8 +7,8 @@ defineProps(['text'])
 </template>
 
 <style scoped>
-p {
-  font-size: 0.875rem;
-  color: #323743FF;
-}
+  p {
+    font-size: 0.875rem;
+    color: #323743ff;
+  }
 </style>
