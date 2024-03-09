@@ -7,12 +7,14 @@
   import Modal from '../molecules/Modal.vue';
   import TextWithLink from '../molecules/TextWithLink.vue';
   import ClickableIcon from '../molecules/ClickableIcon.vue';
+
+  defineProps(['isModalOpen', 'closeModal']);
 </script>
 
 <template>
-  <Modal v-if="true">
+  <Modal v-if="isModalOpen">
     <div class="ConfirmEmailModal">
-      <ClickableIcon class="CloseIcon">
+      <ClickableIcon class="CloseIcon" :onClick="closeModal">
         <XIcon />
       </ClickableIcon>
       <div class="TitleWrapper">
