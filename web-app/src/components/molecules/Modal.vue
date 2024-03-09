@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Overlay from '../atoms/Overlay.vue';
+  import Overlay from '../atoms/Overlay.vue';
 </script>
 
 <template>
@@ -18,8 +18,8 @@ import Overlay from '../atoms/Overlay.vue';
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
-    background-color: #FFFFFF; /* Black background with opacity */
+    transform: translate(-50%, -50%);
+    background-color: #ffffff; /* Black background with opacity */
     z-index: 2;
     border-radius: 12px;
   }

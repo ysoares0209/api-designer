@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps(['onClick'])
+  defineProps(['onClick']);
 </script>
 
 <template>
@@ -9,11 +9,11 @@ defineProps(['onClick'])
 </template>
 
 <style scoped>
- button {
-  padding: 0;
-  margin: 0;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
- }
+  button {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
 </style>
