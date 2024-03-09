@@ -1,10 +1,15 @@
 <script setup lang="ts">
+  /* External */
+  import { ref } from 'vue';
+  /* Assets */
   import XIcon from '../../assets/Icons/XIcon.vue';
+  /* Atoms */
   import Title from '../atoms/Title.vue';
   import Typography from '../atoms/Typography.vue';
-  import CodeInput from '../atoms/CodeInput.vue';
   import Button from '../atoms/Button.vue';
+  /* Molecules */
   import Modal from '../molecules/Modal.vue';
+  import InputConfirmationCode from '../molecules/InputConfirmationCode.vue';
   import TextWithLink from '../molecules/TextWithLink.vue';
   import ClickableIcon from '../molecules/ClickableIcon.vue';
 
@@ -21,11 +26,7 @@
         <Title text="Almost done" />
         <Typography text="Please type the code we sent you in your email" />
       </div>
-      <div class="CodeInputWrapper">
-        <template v-for="n in 6">
-          <CodeInput />
-        </template>
-      </div>
+      <InputConfirmationCode />
       <Button class="VerifyButton" text="Verify" />
       <TextWithLink
         text="Can't access to your email?"
@@ -70,10 +71,5 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-
-  .CodeInputWrapper {
-    display: flex;
-    gap: 1rem;
   }
 </style>
