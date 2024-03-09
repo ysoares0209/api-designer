@@ -3,6 +3,7 @@ import Title from '../atoms/Title.vue';
 import Typography from '../atoms/Typography.vue';
 import Link from '../atoms/Link.vue';
 import Input from '../atoms/Input.vue';
+import InputLabel from '../atoms/InputLabel.vue';
 import Button from '../atoms/Button.vue';
 
 function onSubmit() {
@@ -24,15 +25,15 @@ function onSubmit() {
       <Title text="Sign up" />
       <div class="form-fields">
         <div class="input">
-          <label for="email">Email</label>
+          <InputLabel inputId="email" text="Email" />
           <Input id="email" placeholder="email@example.com" />
         </div>
         <div class="input">
-          <label for="password">Password</label>
+          <InputLabel inputId="password" text="Password" />
           <Input id="password" type="password" placeholder="Enter at least 8 characters" />
         </div>
         <div class="input">
-          <label for="confirmPassword">Confirm password</label>
+          <InputLabel inputId="confirmPassword" text="Confirm password" />
           <Input id="confirmPassword" type="password" placeholder="Enter at least 8 characters" />
         </div>
       </div>
@@ -92,12 +93,7 @@ section {
   padding: 0.5rem 0.75rem;
   border-radius: 6px;
 
-  label {
-    font-size: 0.75rem;
-    font-weight: 700;
-    line-height: 20px;
-    color: #323743
-  }
+  
 }
 
 </style>
