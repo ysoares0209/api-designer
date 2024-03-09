@@ -3,6 +3,11 @@ import Title from '../atoms/Title.vue';
 import Typography from '../atoms/Typography.vue';
 import Link from '../atoms/Link.vue';
 import Input from '../atoms/Input.vue';
+import Button from '../atoms/Button.vue';
+
+function onSubmit() {
+  console.log('123')
+}
 
 </script>
 
@@ -31,7 +36,7 @@ import Input from '../atoms/Input.vue';
           <Input id="confirmPassword" type="password" placeholder="Enter at least 8 characters" />
         </div>
       </div>
-      <button>Sign up</button>
+      <Button text="Sign Up" :onClick="onSubmit" />
     </section>
   </main>
 </template>
@@ -68,12 +73,6 @@ section {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-
-  h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #171A1FFF
-  }
 }
 
 .form-fields {
@@ -101,16 +100,4 @@ section {
   }
 }
 
-button {
-  background-color: #181626;
-  color: #FFFF;
-  border: none;
-  padding: 0;
-  margin: 0;
-  width: 22.5rem;
-  height: 2.5rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1rem;
-}
 </style>
