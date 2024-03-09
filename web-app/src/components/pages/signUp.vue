@@ -9,4 +9,3 @@
   </AuthPagesTemplate>
 </template>
 
-<style scoped></style>
