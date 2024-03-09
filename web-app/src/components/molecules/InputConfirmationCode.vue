@@ -13,7 +13,7 @@
     border: 1px solid #9095a1;
     border-radius: 6px;
     padding: 1rem;
-    letter-spacing: 8px;
+    letter-spacing: 12px;
     text-align: center;
     font-size: 1.5rem;
     font-weight: 600;
