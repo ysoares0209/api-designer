@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import Title from '../atoms/Title.vue';
-import Typography from '../atoms/Typography.vue';
-import Link from '../atoms/Link.vue';
 import Button from '../atoms/Button.vue';
 import InputWithLabel from '../molecules/InputWithLabel.vue';
+import TextWithLink from '../molecules/TextWithLink.vue';
 
 function onSubmit() {
   console.log('123')
@@ -15,10 +14,7 @@ function onSubmit() {
   <main class="page-container">
     <header>
       <span>Logo placeholder</span>
-      <div class="link-container">
-        <Typography text="Already have an account?" />
-        <Link :link="'/'" text="Sign in" />
-      </div>
+      <TextWithLink text="Already have an account?" linkText="Sign In" linkUrl="/" />
     </header>
     <section class="sign-up-form">
       <Title text="Sign up" />
@@ -52,12 +48,6 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.link-container {
-  display: flex;
-  width: 14em;
-  justify-content: space-around;
 }
 
 .sign-up-form {
