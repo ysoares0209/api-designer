@@ -1,9 +1,21 @@
+<!-- This component is essentially just applying styles to input -->
+<!-- which is kinda stupid - I'd prefer to not have this intermediate component -->
+<!-- since I don't want to keep drilling the props but this seems to be down side of Atomic Design -->
+<!-- I'll keep looking into vue to see if there is a better way of doing this (maybe slots) -->
 <script setup lang="ts">
   import Input from '../atoms/Input.vue';
-</script>
 
+  defineProps(['onInputChange']);
+  const inputModel = defineModel('inputModel');
+</script>
 <template>
-  <Input id="InputConfirmationCode" type="number" placeholder="Type in your code" />
+  <Input
+    v-model:inputModel="inputModel"
+    @update:model="onInputChange"
+    id="InputConfirmationCode"
+    type="number"
+    placeholder="Type in your code"
+  />
 </template>
 
 <style scoped>

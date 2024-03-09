@@ -14,6 +14,12 @@
   import ClickableIcon from '../molecules/ClickableIcon.vue';
 
   defineProps(['isModalOpen', 'closeModal']);
+
+  const confirmationCode = ref('');
+  function onConfirmationCodeChange(e) {
+    console.log('confirmationCode', confirmationCode.value);
+    console.log('event', e.target.value);
+  }
 </script>
 
 <template>
@@ -26,7 +32,10 @@
         <Title text="Almost done" />
         <Typography text="Please type the code we sent you in your email" />
       </div>
-      <InputConfirmationCode />
+      <InputConfirmationCode
+        v-model:inputModel="confirmationCode"
+        :onInputChange="onConfirmationCodeChange"
+      />
       <Button class="VerifyButton" text="Verify" />
       <TextWithLink
         text="Can't access to your email?"

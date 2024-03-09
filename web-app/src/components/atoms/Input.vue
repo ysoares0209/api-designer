@@ -1,10 +1,18 @@
 <script setup lang="ts">
+  defineEmits(['update:model']);
   const props = defineProps(['id', 'type', 'placeholder']);
+  const inputModel = defineModel('inputModel');
   const computedType = props.type || 'text';
 </script>
 
 <template>
-  <input :id="id" :type="computedType" :placeholder="placeholder" />
+  <input
+    v-model="inputModel"
+    @input="$emit('update:model', $event)"
+    :id="id"
+    :type="computedType"
+    :placeholder="placeholder"
+  />
 </template>
 
 <style scoped>
