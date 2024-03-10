@@ -1,6 +1,6 @@
 <script setup lang="ts">
   /* External */
-  import { ref } from 'vue';
+  import { computed, ref } from 'vue';
   /* Assets */
   import XIcon from '../../assets/Icons/XIcon.vue';
   /* Atoms */
@@ -15,7 +15,27 @@
 
   defineProps(['isModalOpen', 'closeModal']);
 
+  // Constant
+  const VALID_CONFIRMATION_CODE_LENGTH = 6;
+
+  // Reactive values
   const confirmationCode = ref('');
+  const isValidCode = computed(() => {
+    const onlyHasNumbers = new RegExp(/^[0-9]+$/).test(confirmationCode.value);
+    const confirmationCodeLength = confirmationCode.value.toString().length;
+    if (!onlyHasNumbers || confirmationCodeLength !== VALID_CONFIRMATION_CODE_LENGTH) {
+      return false;
+    }
+    return true;
+  });
+
+  // Functions
+  function onVerifyClick() {
+    if (!isValidCode.value) {
+      return;
+    }
+    console.log('Verifying...');
+  }
 </script>
 
 <template>
@@ -29,7 +49,12 @@
         <Typography text="Please type the code we sent you in your email" />
       </div>
       <InputConfirmationCode v-model:inputModel="confirmationCode" />
-      <Button class="VerifyButton" text="Verify" />
+      <Button
+        class="VerifyButton"
+        text="Verify"
+        :class="{ active: isValidCode }"
+        :onClick="onVerifyClick"
+      />
       <TextWithLink
         text="Can't access to your email?"
         linkText="Get in contact"
@@ -61,6 +86,12 @@
       background-color: #9095a1;
       height: 3rem;
       font-size: 1.125rem;
+      cursor: not-allowed;
+    }
+
+    .active {
+      background-color: #181626;
+      cursor: pointer;
     }
   }
   .CloseIcon {
