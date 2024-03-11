@@ -1,9 +1,10 @@
 <script setup lang="ts">
-  defineProps(['text', 'link']);
+  defineProps(['text', 'link', 'isExternal']);
 </script>
 
 <template>
-  <router-link class="link" :to="link">{{ text }}</router-link>
+  <a v-if="isExternal" class="link" :href="link">{{ text }}</a>
+  <router-link v-else class="link" :to="link">{{ text }}</router-link>
 </template>
 
 <style scoped>

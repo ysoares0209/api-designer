@@ -3,8 +3,11 @@
   import Button from '../atoms/Button.vue';
   import InputWithLabel from '../molecules/InputWithLabel.vue';
 
+  const props = defineProps(['openModal'])
+
   function onSubmit() {
     console.log('123');
+    props.openModal()
   }
 </script>
 
