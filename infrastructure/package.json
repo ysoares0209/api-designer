@@ -5,10 +5,8 @@
     "infrastructure": "bin/infrastructure.js"
   },
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc -w",
-    "test": "jest",
-    "cdk": "cdk"
+    "prettier": "npx prettier bin/* & npx prettier lib/*",
+    "lint": "npx eslint bin/* & npx eslint lib/*"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
