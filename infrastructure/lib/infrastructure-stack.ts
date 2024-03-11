@@ -1,13 +1,12 @@
-import * as cdk from "aws-cdk-lib";
+import { Stack, StackProps } from "aws-cdk-lib";
 import type { Construct } from "constructs";
-import * as sqs from "aws-cdk-lib/aws-sqs";
 
-export class InfrastructureStack extends cdk.Stack {
-  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+import { HttpApi } from "./constructors/HttpApi";
+
+export class InfrastructureStack extends Stack {
+  constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    new sqs.Queue(this, "InfrastructureQueue", {
-      visibilityTimeout: cdk.Duration.seconds(300),
-    });
+    const { api } = new HttpApi(this, "API");
   }
 }
