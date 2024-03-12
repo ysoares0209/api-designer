@@ -3,6 +3,8 @@ import { Duration } from "aws-cdk-lib";
 import { Runtime } from "aws-cdk-lib/aws-lambda";
 import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
 import { RetentionDays } from "aws-cdk-lib/aws-logs";
+/* Utils */
+import addAWSApplicationTag from "../utils/addAWSApplicationTag";
 
 interface Props {
   name: string;
@@ -29,5 +31,7 @@ export class Lambda extends Construct {
       logRetention: RetentionDays.ONE_WEEK,
       timeout: Duration.seconds(duration || 3),
     });
+
+    addAWSApplicationTag(this.function);
   }
 }

@@ -1,6 +1,8 @@
 import { Construct } from "constructs";
 import { RemovalPolicy } from "aws-cdk-lib";
 import { TableV2, AttributeType, Billing } from "aws-cdk-lib/aws-dynamodb";
+/* Utils */
+import addAWSApplicationTag from "../utils/addAWSApplicationTag";
 
 export class DynamoDB extends Construct {
   public readonly table: TableV2;
@@ -14,5 +16,7 @@ export class DynamoDB extends Construct {
       billing: Billing.onDemand(),
       removalPolicy: RemovalPolicy.DESTROY,
     });
+
+    addAWSApplicationTag(this.table);
   }
 }

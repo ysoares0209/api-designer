@@ -7,6 +7,8 @@ import {
   HttpMethod,
 } from "aws-cdk-lib/aws-apigatewayv2";
 import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
+/* Utils */
+import addAWSApplicationTag from "../utils/addAWSApplicationTag";
 
 interface AddRouteProps {
   path: string;
@@ -16,6 +18,7 @@ interface AddRouteProps {
 
 export class HttpApi extends Construct {
   public readonly api: ApiConstructor;
+
   constructor(scope: Construct, id: string) {
     super(scope, id);
     this.api = new ApiConstructor(this, "rest-api", {
@@ -32,6 +35,8 @@ export class HttpApi extends Construct {
     new CfnOutput(this, "ApiUrl", {
       value: this.api.url as string,
     });
+
+    addAWSApplicationTag(this.api);
   }
 
   addRoute(props: AddRouteProps) {

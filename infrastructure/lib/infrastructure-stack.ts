@@ -1,10 +1,12 @@
 import type { Construct } from "constructs";
 import { Stack, StackProps } from "aws-cdk-lib";
-
+/* Constructors */
 import { HttpApi } from "./constructors/HttpApi";
 import { Lambda } from "./constructors/Lambda";
 import { Cognito } from "./constructors/Cognito";
 import { DynamoDB } from "./constructors/DynamoDB";
+/* Utils */
+import addAWSApplicationTag from "./utils/addAWSApplicationTag";
 
 export class InfrastructureStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -30,5 +32,7 @@ export class InfrastructureStack extends Stack {
 
     // endpoints
     httpApi.addRoute({ path: "/sign-up", method: "POST", lambda: SignUpLambda });
+
+    addAWSApplicationTag(this);
   }
 }

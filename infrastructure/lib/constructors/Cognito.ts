@@ -6,6 +6,8 @@ import {
   VerificationEmailStyle,
   AccountRecovery,
 } from "aws-cdk-lib/aws-cognito";
+/* Utils */
+import addAWSApplicationTag from "../utils/addAWSApplicationTag";
 
 export class Cognito extends Construct {
   public readonly userPool: UserPool;
@@ -50,5 +52,8 @@ export class Cognito extends Construct {
       accessTokenValidity: Duration.hours(1),
       refreshTokenValidity: Duration.days(30),
     });
+
+    addAWSApplicationTag(this.userPool);
+    addAWSApplicationTag(this.client);
   }
 }
