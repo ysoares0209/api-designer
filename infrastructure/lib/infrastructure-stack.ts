@@ -1,7 +1,5 @@
 import type { Construct } from "constructs";
 import { Stack, StackProps } from "aws-cdk-lib";
-import { HttpLambdaIntegration } from "aws-cdk-lib/aws-apigatewayv2-integrations";
-import { HttpMethod } from "aws-cdk-lib/aws-apigatewayv2";
 
 import { HttpApi } from "./constructors/HttpApi";
 import { Lambda } from "./constructors/Lambda";
