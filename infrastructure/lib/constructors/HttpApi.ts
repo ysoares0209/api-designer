@@ -1,6 +1,18 @@
 import { CfnOutput } from "aws-cdk-lib";
 import { Construct } from "constructs";
-import { HttpApi as ApiConstructor, CorsHttpMethod } from "aws-cdk-lib/aws-apigatewayv2";
+import { HttpLambdaIntegration } from "aws-cdk-lib/aws-apigatewayv2-integrations";
+import {
+  HttpApi as ApiConstructor,
+  CorsHttpMethod,
+  HttpMethod,
+} from "aws-cdk-lib/aws-apigatewayv2";
+import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
+
+interface AddRouteProps {
+  path: string;
+  lambda: NodejsFunction;
+  method: "POST" | "PUT" | "GET" | "DELETE";
+}
 
 export class HttpApi extends Construct {
   public readonly api: ApiConstructor;
@@ -19,6 +31,23 @@ export class HttpApi extends Construct {
 
     new CfnOutput(this, "ApiUrl", {
       value: this.api.url as string,
+    });
+  }
+
+  addRoute(props: AddRouteProps) {
+    const { path, method, lambda } = props;
+
+    const methodMapper = {
+      ["POST"]: HttpMethod.POST,
+      ["PUT"]: HttpMethod.PUT,
+      ["GET"]: HttpMethod.GET,
+      ["DELETE"]: HttpMethod.DELETE,
+    };
+
+    this.api.addRoutes({
+      path,
+      methods: [methodMapper[method]],
+      integration: new HttpLambdaIntegration(`${method}-${path}`, lambda),
     });
   }
 }

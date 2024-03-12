@@ -13,7 +13,7 @@ export class InfrastructureStack extends Stack {
     super(scope, id, props);
 
     const { userPool, client } = new Cognito(this, "UserPool");
-    const { api } = new HttpApi(this, "API");
+    const httpApi = new HttpApi(this, "API");
     const { table } = new DynamoDB(this, "Table");
 
     // Sign up endpoint
@@ -31,14 +31,6 @@ export class InfrastructureStack extends Stack {
     table.grantWriteData(SignUpLambda);
 
     // endpoints
-    const SignUpLambdaIntegration = new HttpLambdaIntegration(
-      "SignUpLambdaIntegration",
-      SignUpLambda,
-    );
-    api.addRoutes({
-      path: "/sign-up",
-      methods: [HttpMethod.POST],
-      integration: SignUpLambdaIntegration,
-    });
+    httpApi.addRoute({ path: "/sign-up", method: "POST", lambda: SignUpLambda });
   }
 }
