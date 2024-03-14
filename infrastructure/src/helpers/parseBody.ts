@@ -4,6 +4,6 @@
 */
 export default function parseBody(body: string | null | Record<string, unknown>): any {
   if (!body) return {};
-  if (typeof body === "string") return JSON.stringify(body);
+  if (typeof body === "string") return JSON.parse(body);
   return body;
 }
