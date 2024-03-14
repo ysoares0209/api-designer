@@ -8,7 +8,7 @@ import { DynamoDB } from "./constructors/DynamoDB";
 /* Utils */
 import addAWSApplicationTag from "./utils/addAWSApplicationTag";
 
-export class InfrastructureStack extends Stack {
+export class APIDesignerBackendStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 

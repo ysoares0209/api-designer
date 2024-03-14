@@ -4,9 +4,9 @@ import { config } from "dotenv";
 config();
 
 import * as cdk from "aws-cdk-lib";
-import { InfrastructureStack } from "../lib/infrastructure-stack";
+import { APIDesignerBackendStack } from "../lib/APIDesignerBackendStack";
 
 const app = new cdk.App();
-new InfrastructureStack(app, "InfrastructureStack", {
+new APIDesignerBackendStack(app, "APIDesignerBackendStack", {
   env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION },
 });
