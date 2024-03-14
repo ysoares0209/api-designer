@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 import "source-map-support/register";
+import { config } from "dotenv";
+config();
+
 import * as cdk from "aws-cdk-lib";
 import { InfrastructureStack } from "../lib/infrastructure-stack";
 

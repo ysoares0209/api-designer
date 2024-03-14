@@ -1,13 +1,38 @@
-import * as cdk from "aws-cdk-lib";
 import type { Construct } from "constructs";
-import * as sqs from "aws-cdk-lib/aws-sqs";
+import { Stack, StackProps } from "aws-cdk-lib";
+/* Constructors */
+import { HttpApi } from "./constructors/HttpApi";
+import { Lambda } from "./constructors/Lambda";
+import { Cognito } from "./constructors/Cognito";
+import { DynamoDB } from "./constructors/DynamoDB";
+/* Utils */
+import addAWSApplicationTag from "./utils/addAWSApplicationTag";
 
-export class InfrastructureStack extends cdk.Stack {
-  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+export class InfrastructureStack extends Stack {
+  constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    new sqs.Queue(this, "InfrastructureQueue", {
-      visibilityTimeout: cdk.Duration.seconds(300),
+    const { userPool, client } = new Cognito(this, "UserPool");
+    const httpApi = new HttpApi(this, "API");
+    const { table } = new DynamoDB(this, "Table");
+
+    // Sign up endpoint
+    const { function: SignUpLambda } = new Lambda(this, "SignUpLambda", {
+      name: "signUpLambda",
+      description: "Lambda used to sign up an user",
+      entry: "src/handlers/SignUpLambda.ts",
+      envs: {
+        TABLE_NAME: table.tableName,
+        COGNITO_USER_POOL_ID: userPool.userPoolId,
+        COGNITO_CLIENT_ID: client.userPoolClientId,
+      },
+      duration: 5,
     });
+    table.grantWriteData(SignUpLambda);
+
+    // endpoints
+    httpApi.addRoute({ path: "/sign-up", method: "POST", lambda: SignUpLambda });
+
+    addAWSApplicationTag(this);
   }
 }
