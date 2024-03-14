@@ -1,7 +1,6 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 /* Services */
-import createDynamoUser from "@services/dynamoDB/createDynamoUser";
-import createCognitoUser from "@services/cognito/createCognitoUser";
+import verifyUserCode from "@services/cognito/verifyUserCode";
 /* helpers */
 import {
   successfulResponse,
@@ -13,16 +12,12 @@ import parseBody from "@helpers/parseBody";
 export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   try {
     const body = parseBody(event.body);
-    const { userEmail, userPassword } = body;
+    const { userEmail, verificationCode } = body;
     if (!userEmail) return missingParameterResponse("userEmail");
-    if (!userPassword) return missingParameterResponse("userPassword");
+    if (!verificationCode) return missingParameterResponse("verificationCode");
 
-    const { userId } = await createCognitoUser(userEmail, userPassword);
-    if (!userId) throw new Error("Failed to create user on cognito!");
-
-    await createDynamoUser(userId, userEmail);
-
-    return successfulResponse(201, { userId });
+    await verifyUserCode(userEmail, verificationCode);
+    return successfulResponse(204, {});
   } catch (error) {
     console.log(error);
     return internalServerErrorResponse();

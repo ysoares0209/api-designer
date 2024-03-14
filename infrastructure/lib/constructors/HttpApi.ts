@@ -8,7 +8,7 @@ import {
 } from "aws-cdk-lib/aws-apigatewayv2";
 import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
 /* Utils */
-import addAWSApplicationTag from "../utils/addAWSApplicationTag";
+import addDefaultTags from "../utils/addDefaultTags";
 
 interface AddRouteProps {
   path: string;
@@ -36,7 +36,7 @@ export class HttpApi extends Construct {
       value: this.api.url as string,
     });
 
-    addAWSApplicationTag(this.api);
+    addDefaultTags(this.api);
   }
 
   addRoute(props: AddRouteProps) {

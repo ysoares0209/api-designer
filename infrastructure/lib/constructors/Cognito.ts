@@ -7,7 +7,7 @@ import {
   AccountRecovery,
 } from "aws-cdk-lib/aws-cognito";
 /* Utils */
-import addAWSApplicationTag from "../utils/addAWSApplicationTag";
+import addDefaultTags from "../utils/addDefaultTags";
 
 export class Cognito extends Construct {
   public readonly userPool: UserPool;
@@ -53,7 +53,7 @@ export class Cognito extends Construct {
       refreshTokenValidity: Duration.days(30),
     });
 
-    addAWSApplicationTag(this.userPool);
-    addAWSApplicationTag(this.client);
+    addDefaultTags(this.userPool);
+    addDefaultTags(this.client);
   }
 }

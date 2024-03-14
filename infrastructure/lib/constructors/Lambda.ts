@@ -4,7 +4,7 @@ import { Runtime } from "aws-cdk-lib/aws-lambda";
 import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
 import { RetentionDays } from "aws-cdk-lib/aws-logs";
 /* Utils */
-import addAWSApplicationTag from "../utils/addAWSApplicationTag";
+import addDefaultTags from "../utils/addDefaultTags";
 
 interface Props {
   name: string;
@@ -22,7 +22,7 @@ export class Lambda extends Construct {
 
     const { name, description, entry, envs, duration } = props;
     this.function = new NodejsFunction(this, "Function", {
-      functionName: name,
+      functionName: `api-designer_${name}`,
       description,
       entry,
       handler: "handler",
@@ -32,6 +32,6 @@ export class Lambda extends Construct {
       timeout: Duration.seconds(duration || 3),
     });
 
-    addAWSApplicationTag(this.function);
+    addDefaultTags(this.function);
   }
 }

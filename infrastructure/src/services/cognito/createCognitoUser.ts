@@ -1,5 +1,5 @@
 import { SignUpCommand, SignUpCommandInput } from "@aws-sdk/client-cognito-identity-provider";
-import client from "../clients/cognito";
+import client from "@clients/cognito";
 
 export default async function createCognitoUser(email: string, password: string) {
   const clientId = process.env.COGNITO_CLIENT_ID;
