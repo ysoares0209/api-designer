@@ -23,7 +23,6 @@ export class APIDesignerBackendStack extends Stack {
       entry: "src/handlers/SignUpLambda.ts",
       envs: {
         TABLE_NAME: table.tableName,
-        COGNITO_USER_POOL_ID: userPool.userPoolId,
         COGNITO_CLIENT_ID: client.userPoolClientId,
       },
       duration: 5,
