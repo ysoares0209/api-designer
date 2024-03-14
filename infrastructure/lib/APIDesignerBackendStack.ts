@@ -12,7 +12,7 @@ export class APIDesignerBackendStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    const { userPool, client } = new Cognito(this, "UserPool");
+    const { client } = new Cognito(this, "UserPool");
     const httpApi = new HttpApi(this, "API");
     const { table } = new DynamoDB(this, "Table");
 
@@ -35,7 +35,7 @@ export class APIDesignerBackendStack extends Stack {
       description: "Lambda to confirm created user",
       entry: "src/handlers/verifyCodeLambda.ts",
       envs: {
-        COGNITO_USER_POOL_ID: userPool.userPoolId,
+        COGNITO_CLIENT_ID: client.userPoolClientId,
       },
     });
 

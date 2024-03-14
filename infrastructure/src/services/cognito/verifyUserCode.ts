@@ -9,7 +9,7 @@ export default async function verifyUserCode(email: string, code: string) {
   if (!clientId) throw new Error("Client id not found!");
 
   const signUpParams: ConfirmSignUpCommandInput = {
-    ClientId: process.env.COGNITO_POOL_CLIENT_ID,
+    ClientId: clientId,
     ConfirmationCode: code,
     Username: email,
   };
