@@ -44,6 +44,16 @@ export class Cognito extends Construct {
       removalPolicy: RemovalPolicy.DESTROY,
     });
 
+    this.client = this.userPool.addClient("UserPoolClient", {
+      authFlows: {
+        userPassword: true,
+      },
+      idTokenValidity: Duration.hours(1),
+      accessTokenValidity: Duration.hours(1),
+      refreshTokenValidity: Duration.days(30),
+    });
+
     addDefaultTags(this.userPool);
+    addDefaultTags(this.client);
   }
 }
