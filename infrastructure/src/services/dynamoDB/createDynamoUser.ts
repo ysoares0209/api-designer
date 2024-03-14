@@ -1,7 +1,7 @@
 import { PutItemCommand } from "@aws-sdk/client-dynamodb";
 import { marshall } from "@aws-sdk/util-dynamodb";
 
-import client from "../clients/dynamoDB";
+import client from "../../clients/dynamoDB";
 
 export default async function createUser(userId: string, userEmail: string) {
   const tableName = process.env.TABLE_NAME;

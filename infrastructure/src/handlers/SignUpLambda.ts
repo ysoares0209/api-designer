@@ -1,7 +1,7 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 /* Services */
-import createDynamoUser from "../services/createDynamoUser";
-import createCognitoUser from "../services/createCognitoUser";
+import createDynamoUser from "../services/dynamoDB/createDynamoUser";
+import createCognitoUser from "../services/cognito/createCognitoUser";
 /* helpers */
 import {
   successfulResponse,
