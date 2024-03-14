@@ -22,7 +22,7 @@ export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayPr
 
     await createDynamoUser(userId, userEmail);
 
-    return successfulResponse(201, { data: userId });
+    return successfulResponse(201, { userId });
   } catch (error) {
     console.log(error);
     return internalServerErrorResponse();
