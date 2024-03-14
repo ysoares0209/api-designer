@@ -22,7 +22,7 @@ export class Lambda extends Construct {
 
     const { name, description, entry, envs, duration } = props;
     this.function = new NodejsFunction(this, "Function", {
-      functionName: name,
+      functionName: `api-designer_${name}`,
       description,
       entry,
       handler: "handler",
