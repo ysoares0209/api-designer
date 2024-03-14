@@ -7,10 +7,11 @@ import {
   internalServerErrorResponse,
   missingParameterResponse,
 } from "../helpers/httpResponses";
+import parseBody from "../helpers/parseBody";
 
 export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   try {
-    const body = JSON.parse(event.body || "{}");
+    const body = parseBody(event.body);
     const { userEmail, verificationCode } = body;
     if (!userEmail) return missingParameterResponse("userEmail");
     if (!verificationCode) return missingParameterResponse("verificationCode");
