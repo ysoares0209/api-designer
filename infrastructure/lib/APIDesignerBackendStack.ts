@@ -6,7 +6,7 @@ import { Lambda } from "./constructors/Lambda";
 import { Cognito } from "./constructors/Cognito";
 import { DynamoDB } from "./constructors/DynamoDB";
 /* Utils */
-import addAWSApplicationTag from "./utils/addAWSApplicationTag";
+import addDefaultTags from "./utils/addDefaultTags";
 
 export class APIDesignerBackendStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -43,6 +43,6 @@ export class APIDesignerBackendStack extends Stack {
     httpApi.addRoute({ path: "/auth/sign-up", method: "POST", lambda: SignUpLambda });
     httpApi.addRoute({ path: "/auth/verify-code", method: "POST", lambda: VerifyCodeLambda });
 
-    addAWSApplicationTag(this);
+    addDefaultTags(this);
   }
 }
