@@ -14,5 +14,5 @@ export default async function createCognitoUser(email: string, password: string)
   const signUpCommand = new SignUpCommand(signUpParams);
   const response = await client.send(signUpCommand);
 
-  return { success: response.UserConfirmed };
+  return { userId: response.UserSub };
 }
