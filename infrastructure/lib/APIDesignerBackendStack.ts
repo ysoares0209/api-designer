@@ -16,7 +16,7 @@ export class APIDesignerBackendStack extends Stack {
     const httpApi = new HttpApi(this, "API");
     const { table } = new DynamoDB(this, "Table");
 
-    // Sign up endpoint
+    // Sign up
     const { function: SignUpLambda } = new Lambda(this, "SignUpLambda", {
       name: "signUpLambda",
       description: "Lambda used to sign up an user",
@@ -29,8 +29,19 @@ export class APIDesignerBackendStack extends Stack {
     });
     table.grantWriteData(SignUpLambda);
 
+    // Verify code
+    const { function: VerifyCodeLambda } = new Lambda(this, "VerifyCodeLambda", {
+      name: "verifyCodeLambda",
+      description: "Lambda to confirm created user",
+      entry: "src/handlers/verifyCodeLambda.ts",
+      envs: {
+        COGNITO_USER_POOL_ID: userPool.userPoolId,
+      },
+    });
+
     // endpoints
-    httpApi.addRoute({ path: "/sign-up", method: "POST", lambda: SignUpLambda });
+    httpApi.addRoute({ path: "/auth/sign-up", method: "POST", lambda: SignUpLambda });
+    httpApi.addRoute({ path: "/auth/verify-code", method: "POST", lambda: VerifyCodeLambda });
 
     addAWSApplicationTag(this);
   }
