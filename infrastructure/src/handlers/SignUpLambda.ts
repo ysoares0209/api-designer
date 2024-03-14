@@ -1,14 +1,14 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 /* Services */
-import createDynamoUser from "../services/dynamoDB/createDynamoUser";
-import createCognitoUser from "../services/cognito/createCognitoUser";
+import createDynamoUser from "@services/dynamoDB/createDynamoUser";
+import createCognitoUser from "@services/cognito/createCognitoUser";
 /* helpers */
 import {
   successfulResponse,
   internalServerErrorResponse,
   missingParameterResponse,
-} from "../helpers/httpResponses";
-import parseBody from "../helpers/parseBody";
+} from "@helpers/httpResponses";
+import parseBody from "@helpers/parseBody";
 
 export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   try {

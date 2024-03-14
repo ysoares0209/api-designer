@@ -1,13 +1,13 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 /* Services */
-import verifyUserCode from "../services/cognito/verifyUserCode";
+import verifyUserCode from "@services/cognito/verifyUserCode";
 /* helpers */
 import {
   successfulResponse,
   internalServerErrorResponse,
   missingParameterResponse,
-} from "../helpers/httpResponses";
-import parseBody from "../helpers/parseBody";
+} from "@helpers/httpResponses";
+import parseBody from "@helpers/parseBody";
 
 export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   try {

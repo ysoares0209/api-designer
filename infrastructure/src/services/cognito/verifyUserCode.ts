@@ -2,7 +2,7 @@ import {
   ConfirmSignUpCommand,
   ConfirmSignUpCommandInput,
 } from "@aws-sdk/client-cognito-identity-provider";
-import client from "../../clients/cognito";
+import client from "@clients/cognito";
 
 export default async function verifyUserCode(email: string, code: string) {
   const clientId = process.env.COGNITO_CLIENT_ID;
