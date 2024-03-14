@@ -45,6 +45,5 @@ export class Cognito extends Construct {
     });
 
     addAWSApplicationTag(this.userPool);
-    addAWSApplicationTag(this.client);
   }
 }
