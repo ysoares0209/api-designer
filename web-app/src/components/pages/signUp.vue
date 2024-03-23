@@ -6,6 +6,7 @@
 
   // reactive
   const isModalOpen = ref(false);
+  const userEmail = ref('');
 
   // functions
   function openModal() {
@@ -19,7 +20,7 @@
 
 <template>
   <AuthPagesTemplate text="Already have an account?" linkText="Sign In" linkUrl="/sign-in">
-    <AuthPagesSignUpForm :openModal="openModal" />
+    <AuthPagesSignUpForm :openModal="openModal" @update:email="userEmail = $event" />
   </AuthPagesTemplate>
   <ModalConfirmEmail :isModalOpen="isModalOpen" :closeModal="closeModal" />
 </template>

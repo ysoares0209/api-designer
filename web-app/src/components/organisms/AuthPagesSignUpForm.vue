@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
+  import { ref, watch } from 'vue';
   /* components */
   import Title from '../atoms/Title.vue';
   import Button from '../atoms/Button.vue';
@@ -9,8 +9,9 @@
   /* services */
   import { signUpUser } from '../../services/auth';
 
-  // props
+  // props & emitters
   const props = defineProps(['openModal']);
+  const emit = defineEmits(['update:email']);
 
   // reactive state
   const isSubmitting = ref(false);
@@ -47,6 +48,9 @@
       isSubmitting.value = false;
     }
   }
+
+  // watchers
+  watch(email, (newValue) => emit('update:email', newValue));
 </script>
 
 <template>
