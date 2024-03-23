@@ -12,7 +12,7 @@
     :value="value"
     @update:value="$emit('update:value', $event)"
     id="InputConfirmationCode"
-    type="number"
+    type="text"
     placeholder="Type in your code"
   />
 </template>
