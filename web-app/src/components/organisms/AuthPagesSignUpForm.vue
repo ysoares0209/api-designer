@@ -82,7 +82,7 @@
         placeholder="Enter at least 8 characters"
       />
     </form>
-    <Button text="Sign Up" :onClick="onSubmit" />
+    <Button text="Sign Up" type="submit" :onClick="onSubmit" />
   </section>
 </template>
 
