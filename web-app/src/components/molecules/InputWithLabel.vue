@@ -2,13 +2,20 @@
   import Input from '../atoms/Input.vue';
   import InputLabel from '../atoms/InputLabel.vue';
 
-  defineProps(['id', 'type', 'label', 'placeholder']);
+  defineProps(['value', 'id', 'type', 'label', 'placeholder']);
+  defineEmits(['update:value']);
 </script>
 
 <template>
   <div class="InputWithLabel-wrapper">
     <InputLabel :inputId="id" :text="label" />
-    <Input :id="id" :type="type" :placeholder="placeholder" />
+    <Input
+      :value="value"
+      @update:value="$emit('update:value', $event)"
+      :id="id"
+      :type="type"
+      :placeholder="placeholder"
+    />
   </div>
 </template>
 
