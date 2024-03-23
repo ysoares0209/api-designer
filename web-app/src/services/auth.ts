@@ -13,3 +13,17 @@ export const signUpUser = async ({ email, password }: SignUpUserProps) => {
   const data = await result.json();
   return data;
 };
+
+interface VerifyUserCode {
+  email: string;
+  verificationCode: string;
+}
+export const verifyUserCode = async ({ email, verificationCode }: VerifyUserCode) => {
+  const result = await fetch(`${baseApiUrl}/auth/verify-code`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ userEmail: email, verificationCode })
+  });
+  const data = await result.json();
+  return data;
+};
