@@ -48,7 +48,7 @@
         <Title text="Almost done" />
         <Typography text="Please type the code we sent you in your email" />
       </div>
-      <InputConfirmationCode v-model:inputModel="confirmationCode" />
+      <InputConfirmationCode :value="confirmationCode" @update:value="confirmationCode = $event" />
       <Button
         class="VerifyButton"
         text="Verify"

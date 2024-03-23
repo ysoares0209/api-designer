@@ -1,11 +1,23 @@
 <script setup lang="ts">
-  const props = defineProps(['id', 'type', 'placeholder']);
-  const inputModel = defineModel('inputModel');
-  const computedType = props.type || 'text';
+  import { ref, computed, watch } from 'vue';
+
+  const emit = defineEmits(['update:value']);
+  const props = defineProps(['value', 'id', 'type', 'placeholder']);
+
+  //reactive states
+  const localValue = ref(props.value);
+  const computedType = computed(() => {
+    return props.type || 'text';
+  });
+
+  //side effects
+  watch(localValue, (newValue) => {
+    emit('update:value', newValue);
+  });
 </script>
 
 <template>
-  <input v-model="inputModel" :id="id" :type="computedType" :placeholder="placeholder" />
+  <input v-model="localValue" :id="id" :type="computedType" :placeholder="placeholder" />
 </template>
 
 <style scoped>
