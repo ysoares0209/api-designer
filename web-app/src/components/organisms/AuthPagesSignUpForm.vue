@@ -1,8 +1,11 @@
 <script setup lang="ts">
   import { ref } from 'vue';
+  /* components */
   import Title from '../atoms/Title.vue';
   import Button from '../atoms/Button.vue';
   import InputWithLabel from '../molecules/InputWithLabel.vue';
+  /* utils */
+  import validateSignUpForm from '../../utils/validateSignUpForm';
 
   // props
   const props = defineProps(['openModal']);
@@ -15,10 +18,23 @@
   // function
   function onSubmit() {
     console.log('123');
+
+    const localEmail = email.value;
+    const localPassword = password.value;
+    const localConfirmPassword = confirmPassword.value;
+
+    const { success, message } = validateSignUpForm({
+      email: localEmail,
+      password: localPassword,
+      confirmPassword: localConfirmPassword
+    });
+
+    if (!success) {
+      alert(message);
+      return;
+    }
+
     props.openModal();
-    console.log('email', email);
-    console.log('password', password);
-    console.log('confirmPassword', password);
   }
 </script>
 
