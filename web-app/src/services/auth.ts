@@ -5,7 +5,7 @@ interface SignUpUserProps {
   password: string;
 }
 export const signUpUser = async ({ email, password }: SignUpUserProps) => {
-  const result = await fetch(`${baseApiUrl}/auth/sign-up`, {
+  const result = await fetch(`${baseApiUrl}auth/sign-up`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ userEmail: email, userPassword: password })
@@ -19,11 +19,10 @@ interface VerifyUserCode {
   verificationCode: string;
 }
 export const verifyUserCode = async ({ email, verificationCode }: VerifyUserCode) => {
-  const result = await fetch(`${baseApiUrl}/auth/verify-code`, {
+  const result = await fetch(`${baseApiUrl}auth/verify-code`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ userEmail: email, verificationCode })
   });
-  const data = await result.json();
-  return data;
+  return result;
 };
