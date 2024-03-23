@@ -4,6 +4,7 @@
   import AuthPagesTemplate from '../Templates/AuthPages.vue';
   import AuthPagesSignUpForm from '../organisms/AuthPagesSignUpForm.vue';
   import ModalConfirmEmail from '../organisms/ModalConfirmEmail.vue';
+  import Toaster from '../organisms/Toaster.vue';
   /* services & utils */
   import validateSignUpForm from '../../utils/validateSignUpForm';
   import { signUpUser } from '../../services/auth';
@@ -74,4 +75,5 @@
     />
   </AuthPagesTemplate>
   <ModalConfirmEmail :userEmail="email" :isModalOpen="isModalOpen" :closeModal="closeModal" />
+  <Toaster />
 </template>
