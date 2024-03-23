@@ -12,8 +12,10 @@
   import InputConfirmationCode from '../molecules/InputConfirmationCode.vue';
   import TextWithLink from '../molecules/TextWithLink.vue';
   import ClickableIcon from '../molecules/ClickableIcon.vue';
+  /* Services */
+  import { verifyUserCode } from '../../services/auth';
 
-  defineProps(['isModalOpen', 'closeModal']);
+  const props = defineProps(['userEmail', 'isModalOpen', 'closeModal']);
 
   // Constant
   const VALID_CONFIRMATION_CODE_LENGTH = 6;
@@ -30,11 +32,15 @@
   });
 
   // Functions
-  function onVerifyClick() {
+  async function onVerifyClick() {
     if (!isValidCode.value) {
       return;
     }
-    console.log('Verifying...');
+    const data = await verifyUserCode({
+      email: props.userEmail,
+      verificationCode: confirmationCode.value
+    });
+    console.log(data);
   }
 </script>
 

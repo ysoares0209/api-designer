@@ -22,5 +22,5 @@
   <AuthPagesTemplate text="Already have an account?" linkText="Sign In" linkUrl="/sign-in">
     <AuthPagesSignUpForm :openModal="openModal" @update:email="userEmail = $event" />
   </AuthPagesTemplate>
-  <ModalConfirmEmail :isModalOpen="isModalOpen" :closeModal="closeModal" />
+  <ModalConfirmEmail :userEmail="userEmail" :isModalOpen="isModalOpen" :closeModal="closeModal" />
 </template>
