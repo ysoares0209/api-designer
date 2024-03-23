@@ -7,7 +7,7 @@
 </script>
 
 <template>
-  <button @click="onClick" :type="buttonType">{{ text }}</button>
+  <button @click.prevent="onClick" :type="buttonType">{{ text }}</button>
 </template>
 
 <style scoped>
