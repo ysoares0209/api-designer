@@ -56,7 +56,7 @@
 <template>
   <section class="AuthPagesSignUpForm-wrapper">
     <Title text="Sign up" />
-    <div class="form-fields">
+    <form class="form-fields">
       <InputWithLabel
         :value="email"
         @update:value="email = $event"
@@ -81,7 +81,7 @@
         label="Confirm password"
         placeholder="Enter at least 8 characters"
       />
-    </div>
+    </form>
     <Button text="Sign Up" :onClick="onSubmit" />
   </section>
 </template>
