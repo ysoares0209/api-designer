@@ -6,35 +6,46 @@
   import InputWithLabel from '../molecules/InputWithLabel.vue';
   /* utils */
   import validateSignUpForm from '../../utils/validateSignUpForm';
+  /* services */
+  import { signUpUser } from '../../services/auth';
 
   // props
   const props = defineProps(['openModal']);
 
   // reactive state
+  const isSubmitting = ref(false);
   const email = ref('');
   const password = ref('');
   const confirmPassword = ref('');
 
   // function
-  function onSubmit() {
-    console.log('123');
+  async function onSubmit() {
+    try {
+      const localEmail = email.value;
+      const localPassword = password.value;
+      const localConfirmPassword = confirmPassword.value;
 
-    const localEmail = email.value;
-    const localPassword = password.value;
-    const localConfirmPassword = confirmPassword.value;
+      const { success, message } = validateSignUpForm({
+        email: localEmail,
+        password: localPassword,
+        confirmPassword: localConfirmPassword
+      });
 
-    const { success, message } = validateSignUpForm({
-      email: localEmail,
-      password: localPassword,
-      confirmPassword: localConfirmPassword
-    });
+      if (!success) {
+        alert(message);
+        return;
+      }
 
-    if (!success) {
-      alert(message);
-      return;
+      isSubmitting.value = true;
+      const data = await signUpUser({ email: localEmail, password: localPassword });
+      console.log(data);
+
+      props.openModal();
+    } catch (error) {
+      console.log('error', error);
+    } finally {
+      isSubmitting.value = false;
     }
-
-    props.openModal();
   }
 </script>
 
