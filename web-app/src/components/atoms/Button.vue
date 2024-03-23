@@ -1,9 +1,13 @@
 <script setup lang="ts">
-  defineProps(['text', 'onClick']);
+  import { computed } from 'vue';
+  const props = defineProps(['text', 'type', 'onClick']);
+  const buttonType = computed(() => {
+    return props.type || 'button';
+  });
 </script>
 
 <template>
-  <button @click="onClick">{{ text }}</button>
+  <button @click="onClick" :type="buttonType">{{ text }}</button>
 </template>
 
 <style scoped>
