@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import { ref } from 'vue';
+  import LoadingBar from '../atoms/LoadingBar.vue';
   const showToaster = ref(false);
 
   async function toggle() {
@@ -15,9 +16,7 @@
       <v-icon name="bi-check-circle-fill" scale="1.5" fill="#63b365 " />
       <span class="Snackbar-text"> User successfully created! </span>
     </div>
-    <div class="Snackbar-loading-bar" style="--duration: 2.5">
-      <div />
-    </div>
+    <LoadingBar />
   </div>
 </template>
 
@@ -58,19 +57,6 @@
 
   .Snackbar-text {
     text-align: left;
-  }
-
-  .Snackbar-loading-bar {
-    height: 4px;
-    width: 100%;
-
-    div {
-      height: 100%;
-      border-radius: 8px;
-      animation: roundtime calc(var(--duration) * 1s) linear forwards;
-      transform-origin: left center;
-      background: linear-gradient(to bottom, #63b365, #63b365);
-    }
   }
 
   @-webkit-keyframes fadein {
@@ -114,17 +100,6 @@
     to {
       bottom: 0;
       opacity: 0;
-    }
-  }
-
-  @-webkit-keyframes roundtime {
-    to {
-      transform: scaleX(0);
-    }
-  }
-  @keyframes roundtime {
-    to {
-      transform: scaleX(0);
     }
   }
 </style>
