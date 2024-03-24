@@ -31,6 +31,8 @@
   }
 
   async function onSubmit() {
+    /* Prevents double clicking */
+    if (isSubmitting.value) return;
     try {
       const localEmail = email.value;
       const localPassword = password.value;
