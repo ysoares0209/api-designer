@@ -5,14 +5,9 @@
   import { useNotificationsStore } from '../../stores/notifications';
 
   const store = useNotificationsStore();
-
-  function onButtonClick() {
-    store.showNotification('User failed to be created. Try again later!', 'success', 3);
-  }
 </script>
 
 <template>
-  <button @click="onButtonClick">Toggle</button>
   <Snackbar :isVisible="store.state.isVisible" :duration="store.state.duration">
     <div class="NotificationSnackbar-contentWrapper">
       <v-icon :name="store.iconName" scale="1.5" :fill="store.notificationColor" />
