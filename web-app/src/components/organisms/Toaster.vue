@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import { ref } from 'vue';
+  import Typography from '../atoms/Typography.vue';
   import LoadingBar from '../atoms/LoadingBar.vue';
   const showToaster = ref(false);
 
@@ -14,7 +15,7 @@
   <div v-show="showToaster" class="Snackbar-wrapper" :class="{ show: showToaster }">
     <div class="temp-wrapper">
       <v-icon name="bi-check-circle-fill" scale="1.5" fill="#63b365 " />
-      <span class="Snackbar-text"> User successfully created! </span>
+      <Typography text="User successfully created!" />
     </div>
     <LoadingBar />
   </div>
