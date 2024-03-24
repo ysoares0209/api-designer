@@ -1,21 +1,25 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
   import Typography from '../atoms/Typography.vue';
   import LoadingBar from '../atoms/LoadingBar.vue';
-  const showToaster = ref(false);
+  import { useNotificationsStore } from '../../stores/notifications';
 
-  async function toggle() {
-    showToaster.value = true;
-    setTimeout(() => (showToaster.value = false), 2800); // adds 300 ms for the fade out effect
+  const store = useNotificationsStore();
+
+  function onButtonClick() {
+    store.showNotification('User successfully created!', 'success');
   }
 </script>
 
 <template>
-  <button @click="toggle">Toggle</button>
-  <div v-show="showToaster" class="Snackbar-wrapper" :class="{ show: showToaster }">
+  <button @click="onButtonClick">Toggle</button>
+  <div
+    v-show="store.state.isVisible"
+    class="Snackbar-wrapper"
+    :class="{ show: store.state.isVisible }"
+  >
     <div class="temp-wrapper">
       <v-icon name="bi-check-circle-fill" scale="1.5" fill="#63b365 " />
-      <Typography text="User successfully created!" />
+      <Typography :text="store.state.message" />
     </div>
     <LoadingBar />
   </div>
