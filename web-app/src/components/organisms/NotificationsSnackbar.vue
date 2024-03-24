@@ -7,14 +7,14 @@
   const store = useNotificationsStore();
 
   function onButtonClick() {
-    store.showNotification('User failed to be created. Try again later!', 'success', 5);
+    store.showNotification('User failed to be created. Try again later!', 'success', 3);
   }
 </script>
 
 <template>
   <button @click="onButtonClick">Toggle</button>
   <Snackbar :isVisible="store.state.isVisible" :duration="store.state.duration">
-    <div class="temp-wrapper">
+    <div class="NotificationSnackbar-contentWrapper">
       <v-icon :name="store.iconName" scale="1.5" :fill="store.notificationColor" />
       <Typography :text="store.state.message" />
     </div>
@@ -23,13 +23,9 @@
 </template>
 
 <style scoped>
-  .temp-wrapper {
+  .NotificationSnackbar-contentWrapper {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-  }
-
-  .Snackbar-text {
-    text-align: left;
   }
 </style>
