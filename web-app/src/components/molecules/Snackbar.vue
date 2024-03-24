@@ -1,14 +1,26 @@
 <script setup lang="ts">
-  defineProps({
+  import { computed } from 'vue';
+  const props = defineProps({
     isVisible: {
       type: Boolean,
       default: false
+    },
+    duration: {
+      type: Number,
+      required: true
     }
   });
+
+  const computedDuration = computed(() => `${props.duration}s`);
 </script>
 
 <template>
-  <div v-show="isVisible" class="Snackbar-wrapper" :class="{ show: isVisible }">
+  <div
+    v-show="isVisible"
+    class="Snackbar-wrapper"
+    :class="{ show: isVisible }"
+    :style="{ '--duration': computedDuration }"
+  >
     <slot></slot>
   </div>
 </template>
@@ -36,10 +48,10 @@
     visibility: visible;
     -webkit-animation:
       fadein 0.5s,
-      fadeout 0.5s 2.5s;
+      fadeout 0.5s var(--duration);
     animation:
       fadein 0.5s,
-      fadeout 0.5s 2.5s;
+      fadeout 0.5s var(--duration);
   }
 
   @-webkit-keyframes fadein {

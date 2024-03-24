@@ -1,7 +1,7 @@
 <script setup lang="ts">
   defineProps({
-    duration: { type: Number, default: 2.5 },
-    color: { type: String, default: '#63b365' }
+    duration: { type: Number, required: true },
+    color: { type: String, required: true }
   });
 </script>
 
