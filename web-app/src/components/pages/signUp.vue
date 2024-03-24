@@ -4,10 +4,14 @@
   import AuthPagesTemplate from '../Templates/AuthPages.vue';
   import AuthPagesSignUpForm from '../organisms/AuthPagesSignUpForm.vue';
   import ModalConfirmEmail from '../organisms/ModalConfirmEmail.vue';
-  import Toaster from '../organisms/NotificationsSnackbar.vue';
-  /* services & utils */
+  /* Services & utils */
   import validateSignUpForm from '../../utils/validateSignUpForm';
   import { signUpUser } from '../../services/auth';
+  /* Stores */
+  import { useNotificationsStore } from '../../stores/notifications';
+
+  // stores
+  const store = useNotificationsStore();
 
   // reactive
   const isModalOpen = ref(false);
@@ -39,7 +43,7 @@
       });
 
       if (!success) {
-        alert(message);
+        store.showNotification(message as string, 'error');
         return;
       }
 
@@ -47,9 +51,11 @@
       const data = await signUpUser({ email: localEmail, password: localPassword });
       console.log(data);
 
+      store.showNotification('User successfully created!', 'success');
       openModal();
     } catch (error) {
       console.log('error', error);
+      store.showNotification('User failed to be created! Try again later', 'error');
     } finally {
       isSubmitting.value = false;
     }
@@ -75,5 +81,4 @@
     />
   </AuthPagesTemplate>
   <ModalConfirmEmail :userEmail="email" :isModalOpen="isModalOpen" :closeModal="closeModal" />
-  <Toaster />
 </template>
