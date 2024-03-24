@@ -4,7 +4,7 @@
   import AuthPagesTemplate from '../Templates/AuthPages.vue';
   import AuthPagesSignUpForm from '../organisms/AuthPagesSignUpForm.vue';
   import ModalConfirmEmail from '../organisms/ModalConfirmEmail.vue';
-  import Toaster from '../organisms/Toaster.vue';
+  import Toaster from '../organisms/NotificationsSnackbar.vue';
   /* services & utils */
   import validateSignUpForm from '../../utils/validateSignUpForm';
   import { signUpUser } from '../../services/auth';
