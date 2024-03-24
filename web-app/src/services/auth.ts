@@ -11,7 +11,7 @@ export const signUpUser = async ({ email, password }: SignUpUserProps) => {
     body: JSON.stringify({ userEmail: email, userPassword: password })
   });
   const data = await result.json();
-  return data;
+  return { success: result.status === 201, data };
 };
 
 interface VerifyUserCode {

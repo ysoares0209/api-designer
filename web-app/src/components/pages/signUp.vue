@@ -48,13 +48,16 @@
       }
 
       isSubmitting.value = true;
-      const data = await signUpUser({ email: localEmail, password: localPassword });
-      console.log(data);
+      const signUpUserResult = await signUpUser({ email: localEmail, password: localPassword });
+      if (!signUpUserResult.success) {
+        store.showNotification(signUpUserResult.data.message as string, 'error');
+        return;
+      }
 
       store.showNotification('User successfully created!', 'success');
       openModal();
     } catch (error) {
-      console.log('error', error);
+      console.error('error', error);
       store.showNotification('User failed to be created! Try again later', 'error');
     } finally {
       isSubmitting.value = false;
