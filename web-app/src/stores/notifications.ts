@@ -9,7 +9,7 @@ const initialState = {
   type: '',
   duration: 0
 };
-const durationOffset = 500;
+const durationOffset = 300;
 
 export const useNotificationsStore = defineStore('notifications', () => {
   // state
