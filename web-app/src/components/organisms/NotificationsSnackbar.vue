@@ -7,7 +7,7 @@
   const store = useNotificationsStore();
 
   function onButtonClick() {
-    store.showNotification('User successfully created!', 'success');
+    store.showNotification('User failed to be created. Try again later!', 'success');
   }
 </script>
 
@@ -15,10 +15,10 @@
   <button @click="onButtonClick">Toggle</button>
   <Snackbar :isVisible="store.state.isVisible">
     <div class="temp-wrapper">
-      <v-icon name="bi-check-circle-fill" scale="1.5" fill="#63b365 " />
+      <v-icon :name="store.iconName" scale="1.5" :fill="store.notificationColor" />
       <Typography :text="store.state.message" />
     </div>
-    <LoadingBar />
+    <LoadingBar :color="store.notificationColor" />
   </Snackbar>
 </template>
 
