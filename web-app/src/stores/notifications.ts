@@ -7,9 +7,9 @@ const initialState = {
   isVisible: false,
   message: '',
   type: '',
-  duration: 2500 // in milliseconds
+  duration: 0
 };
-const durationOffset = 300;
+const durationOffset = 500;
 
 export const useNotificationsStore = defineStore('notifications', () => {
   // state
@@ -26,7 +26,7 @@ export const useNotificationsStore = defineStore('notifications', () => {
   });
 
   // methods
-  function showNotification(message: string, type: NotificationType, duration: number = 2500) {
+  function showNotification(message: string, type: NotificationType, duration: number = 2.5) {
     state.value = {
       isVisible: true,
       message: message,
@@ -35,7 +35,9 @@ export const useNotificationsStore = defineStore('notifications', () => {
     };
 
     // reset automatically after notification plays out
-    setTimeout(() => (state.value = initialState), duration + durationOffset);
+    // duration * 1000 to convert to milliseconds
+    const timeout = duration * 1000 + durationOffset;
+    setTimeout(() => (state.value = initialState), timeout);
   }
 
   return {
