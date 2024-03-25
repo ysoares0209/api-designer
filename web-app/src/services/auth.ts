@@ -24,5 +24,5 @@ export const verifyUserCode = async ({ email, verificationCode }: VerifyUserCode
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ userEmail: email, verificationCode })
   });
-  return result;
+  return { success: result.status === 204 };
 };
