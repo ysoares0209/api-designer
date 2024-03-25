@@ -70,7 +70,7 @@
         :onClick="onVerifyClick"
       />
       <TextWithLink
-        text="Can't access to your email?"
+        text="Can not get access to your email?"
         linkText="Get in contact"
         linkUrl="mailto:yansoaressilva@outlook.com"
         :isExternalLink="true"
