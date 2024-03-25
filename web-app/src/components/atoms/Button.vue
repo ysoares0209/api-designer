@@ -1,8 +1,9 @@
 <script setup lang="ts">
-  import { computed } from 'vue';
-  const props = defineProps(['text', 'type', 'onClick']);
-  const buttonType = computed(() => {
-    return props.type || 'button';
+  import type { PropType } from 'vue';
+  defineProps({
+    text: { type: String, required: true },
+    buttonType: { type: String as PropType<'button' | 'submit' | 'reset'>, default: 'button' },
+    onClick: { type: Function as PropType<(event: MouseEvent) => void>, required: true }
   });
 </script>
 
