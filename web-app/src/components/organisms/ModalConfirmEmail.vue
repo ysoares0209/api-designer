@@ -97,10 +97,6 @@
     gap: 3rem;
 
     /* Customisations */
-    .TextWithLinkWrapper {
-      width: 17rem;
-    }
-
     .VerifyButton {
       background-color: #9095a1;
       height: 3rem;
