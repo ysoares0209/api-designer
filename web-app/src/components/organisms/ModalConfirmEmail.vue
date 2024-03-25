@@ -1,6 +1,7 @@
 <script setup lang="ts">
   /* External */
   import { computed, ref } from 'vue';
+  import { useRouter } from 'vue-router';
   /* Assets */
   import XIcon from '../../assets/Icons/XIcon.vue';
   /* Atoms */
@@ -14,10 +15,12 @@
   import ClickableIcon from '../molecules/ClickableIcon.vue';
   /* Services */
   import { verifyUserCode } from '../../services/auth';
+  /* Stores */
+  import { useNotificationsStore } from '../../stores/notifications';
 
   const props = defineProps(['userEmail', 'isModalOpen', 'closeModal']);
-
-  // Constant
+  const router = useRouter();
+  const store = useNotificationsStore();
   const VALID_CONFIRMATION_CODE_LENGTH = 6;
 
   // Reactive values
@@ -33,14 +36,19 @@
 
   // Functions
   async function onVerifyClick() {
-    if (!isValidCode.value) {
-      return;
+    try {
+      if (!isValidCode.value) return;
+      const data = await verifyUserCode({
+        email: props.userEmail,
+        verificationCode: confirmationCode.value
+      });
+      if (!data.success) throw new Error('Code validation failed');
+      store.showNotification('Successfully validated code!', 'success');
+      router.push('/sign-in');
+    } catch (error) {
+      console.error('error', error);
+      store.showNotification('Code could not be validated. Try again later!', 'error');
     }
-    const data = await verifyUserCode({
-      email: props.userEmail,
-      verificationCode: confirmationCode.value
-    });
-    console.log(data);
   }
 </script>
 
