@@ -8,7 +8,10 @@
 </script>
 
 <template>
-  <button @click.prevent="onClick" :type="buttonType">{{ text }}</button>
+  <button @click.prevent="onClick" :type="buttonType">
+    {{ text }}
+    <slot></slot>
+  </button>
 </template>
 
 <style scoped>
