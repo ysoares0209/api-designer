@@ -69,22 +69,22 @@
 
 <template>
   <AuthPagesTemplate
-    formTitle="Sign Up"
-    formButtonText="Sign Up"
-    :onFormSubmit="onSubmit"
-    headerText="Already have an account?"
-    headerLinkText="Sign In"
-    headerLinkUrl="/sign-in"
+    form-title="Sign Up"
+    form-button-text="Sign Up"
+    :on-form-submit="onSubmit"
+    header-text="Already have an account?"
+    header-link-text="Sign In"
+    header-link-url="/sign-in"
     :is-loading="isSubmitting"
   >
     <AuthPagesSignUpForm
       :email="email"
       :password="password"
-      :confirmPassword="confirmPassword"
+      :confirm-password="confirmPassword"
       @update:email="email = $event"
       @update:password="password = $event"
       @update:confirm-password="confirmPassword = $event"
     />
   </AuthPagesTemplate>
-  <ModalConfirmEmail :userEmail="email" :isModalOpen="isModalOpen" :closeModal="closeModal" />
+  <ModalConfirmEmail :user-email="email" :is-modal-open="isModalOpen" :close-modal="closeModal" />
 </template>
