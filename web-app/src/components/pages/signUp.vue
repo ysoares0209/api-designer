@@ -75,6 +75,7 @@
     headerText="Already have an account?"
     headerLinkText="Sign In"
     headerLinkUrl="/sign-in"
+    :is-loading="isSubmitting"
   >
     <AuthPagesSignUpForm
       :email="email"

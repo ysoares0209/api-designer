@@ -1,18 +1,20 @@
 <script setup lang="ts">
   /* Components */
+  import type { PropType } from 'vue';
   import Title from '../atoms/Title.vue';
-  import Button from '../atoms/Button.vue';
+  import ButtonWithLoading from '../molecules/ButtonWithLoading.vue';
   import AuthPagesHeader from '../organisms/AuthPagesHeader.vue';
 
   /* Props */
-  defineProps([
-    'formTitle',
-    'formButtonText',
-    'onFormSubmit',
-    'headerText',
-    'headerLinkText',
-    'headerLinkUrl'
-  ]);
+  defineProps({
+    formTitle: { type: String, required: true },
+    formButtonText: { type: String, required: true },
+    onFormSubmit: { type: Function as PropType<(event: MouseEvent) => void>, required: true },
+    headerText: { type: String, required: true },
+    headerLinkText: { type: String, required: true },
+    headerLinkUrl: { type: String, required: true },
+    isLoading: { type: Boolean, default: false }
+  });
 </script>
 
 <template>
@@ -23,7 +25,12 @@
       <div class="form-fields">
         <slot></slot>
       </div>
-      <Button :text="formButtonText" type="submit" :onClick="onFormSubmit" />
+      <ButtonWithLoading
+        :is-loading="isLoading"
+        :text="formButtonText"
+        button-type="submit"
+        :onClick="onFormSubmit"
+      />
     </form>
   </main>
 </template>
