@@ -7,12 +7,12 @@
   /* Atoms */
   import Title from '../atoms/Title.vue';
   import Typography from '../atoms/Typography.vue';
-  import Button from '../atoms/Button.vue';
   /* Molecules */
   import Modal from '../molecules/Modal.vue';
   import InputConfirmationCode from '../molecules/InputConfirmationCode.vue';
   import TextWithLink from '../molecules/TextWithLink.vue';
   import ClickableIcon from '../molecules/ClickableIcon.vue';
+  import ButtonWithLoading from '../molecules/ButtonWithLoading.vue';
   /* Services */
   import { verifyUserCode } from '../../services/auth';
   /* Stores */
@@ -24,6 +24,7 @@
   const VALID_CONFIRMATION_CODE_LENGTH = 6;
 
   // Reactive values
+  const isSubmitting = ref(false);
   const confirmationCode = ref('');
   const isValidCode = computed(() => {
     const onlyHasNumbers = new RegExp(/^[0-9]+$/).test(confirmationCode.value);
@@ -38,6 +39,7 @@
   async function onVerifyClick() {
     try {
       if (!isValidCode.value) return;
+      isSubmitting.value = true;
       const data = await verifyUserCode({
         email: props.userEmail,
         verificationCode: confirmationCode.value
@@ -48,6 +50,8 @@
     } catch (error) {
       console.error('error', error);
       store.showNotification('Code could not be validated. Try again later!', 'error');
+    } finally {
+      isSubmitting.value = false;
     }
   }
 </script>
@@ -63,9 +67,10 @@
         <Typography text="Please type the code we sent you in your email" />
       </div>
       <InputConfirmationCode :value="confirmationCode" @update:value="confirmationCode = $event" />
-      <Button
+      <ButtonWithLoading
         class="VerifyButton"
         text="Verify"
+        :is-loading="isSubmitting"
         :class="{ active: isValidCode }"
         :onClick="onVerifyClick"
       />
