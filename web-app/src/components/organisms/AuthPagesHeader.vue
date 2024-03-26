@@ -1,11 +1,12 @@
 <script setup lang="ts">
+  import Logo from '../../assets/Icons/LogoWithText.vue';
   import TextWithLink from '../molecules/TextWithLink.vue';
   defineProps(['text', 'linkText', 'linkUrl']);
 </script>
 
 <template>
   <header class="AuthPagesHeader-wrapper">
-    <span>Logo placeholder</span>
+    <Logo />
     <TextWithLink :text="text" :linkText="linkText" :linkUrl="linkUrl" />
   </header>
 </template>

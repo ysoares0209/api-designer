@@ -1,17 +1,18 @@
-<!-- This component is essentially just applying styles to input -->
+<!-- This component is essentially just applying styles to input & passing the data up -->
 <!-- which is kinda stupid - I'd prefer to not have this intermediate component -->
 <!-- since I don't want to keep drilling the props but this seems to be down side of Atomic Design -->
 <!-- I'll keep looking into vue to see if there is a better way of doing this (maybe slots) -->
 <script setup lang="ts">
   import Input from '../atoms/Input.vue';
-
-  const inputModel = defineModel('inputModel');
+  defineProps(['value']);
+  defineEmits(['update:value']);
 </script>
 <template>
   <Input
-    v-model:inputModel="inputModel"
+    :value="value"
+    @update:value="$emit('update:value', $event)"
     id="InputConfirmationCode"
-    type="number"
+    type="text"
     placeholder="Type in your code"
   />
 </template>
