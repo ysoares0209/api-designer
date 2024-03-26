@@ -1,14 +1,16 @@
 <script setup lang="ts">
-  import { ref, computed, watch } from 'vue';
+  import { ref, watch } from 'vue';
 
   const emit = defineEmits(['update:value']);
-  const props = defineProps(['value', 'id', 'type', 'placeholder']);
+  const props = defineProps({
+    value: { type: String, required: true },
+    id: { type: String, required: true },
+    type: { type: String, required: false, default: 'text' },
+    placeholder: { type: String, required: false, default: '' }
+  });
 
   //reactive states
   const localValue = ref(props.value);
-  const computedType = computed(() => {
-    return props.type || 'text';
-  });
 
   //side effects
   watch(localValue, (newValue) => {
@@ -17,7 +19,7 @@
 </script>
 
 <template>
-  <input v-model="localValue" :id="id" :type="computedType" :placeholder="placeholder" />
+  <input v-model="localValue" :id="id" :type="type" :placeholder="placeholder" />
 </template>
 
 <style scoped>
